@@ -1,7 +1,7 @@
 import Menu from "./Menu"
 
 export interface PaginaProps {
-    children: any
+    children: React.ReactNode
     className?: string
 }
 

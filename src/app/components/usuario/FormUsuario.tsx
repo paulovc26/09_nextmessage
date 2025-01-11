@@ -1,6 +1,5 @@
 import { Usuario } from "@/core/model/Usuario";
 import InputTexto from "../shared/InputTexto";
-import { useState } from "react";
 
 export interface FormUsuarioProps {
     usuario: Partial<Usuario>
