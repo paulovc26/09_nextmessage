@@ -1,9 +1,7 @@
 
-# Sistema de Mensagens Instantâneas
+# CRUD Next 15
 
-Aplicação de mensagens instantâneas, seu foco é integração a sistemas.
-
-Ainda em construção e aberto a novas ideias e dicas.
+Conhecendo o framework e suas práticas
 
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
