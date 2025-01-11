@@ -8,7 +8,7 @@ export interface PaginaProps {
 export default function Pagina(props: PaginaProps) {
     return (
         <div className="flex">
-            <Menu />
+            <Menu></Menu>
             <main className={`flex-1 p-7 ${props.className ?? ''}`}>{props.children}</main>
         </div>
     );

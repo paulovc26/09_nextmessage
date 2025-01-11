@@ -1,3 +1,4 @@
+'use client'
 import { InputHTMLAttributes } from "react";
 
 export interface InputTextoProps extends InputHTMLAttributes<HTMLInputElement> {
@@ -7,7 +8,7 @@ export default function InputTexto(props: InputTextoProps) {
     return (
         <div className="flex flex-col gap-2">
             <label>{props.label}</label>
-            <input {...props} className="bg-zinc-800 p-2 rounded-md outline-none" />
+            <input {...props} className="bg-zinc-300 p-2 rounded-md outline-none" />
         </div>
     )
 

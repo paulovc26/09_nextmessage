@@ -1,30 +1,40 @@
 'use client'
-import Pagina from "@/app/components/template/Pagina";
-import Titulo from "@/app/components/template/Titulo";
-import FormUsuario from "@/app/components/usuario/FormUsuario";
-import ListaUsuario from "@/app/components/usuario/ListaUsuario";
-import usuarios from "@/app/data/constants/usuarios";
-import { Usuario } from "@/core/model/Usuario";
-import { IconUser } from "@tabler/icons-react";
-import { useState } from "react";
-
-function onSave() {
-    console.log('Salvar')
-}
+import { IconPlus, IconUser } from '@tabler/icons-react'
+import FormUsuario from '@/app/components/usuario/FormUsuario'
+import ListaUsuario from '@/app/components/usuario/ListaUsuario'
+import Pagina from '@/app/components/template/Pagina'
+import Titulo from '@/app/components/template/Titulo'
+import useUsuarios from '@/app/data/hooks/useUsuarios'
 
 export default function Page() {
-    const [usuario, setUsuario] = useState<Usuario>(usuarios[0]);
-    return (
+    const { usuario, usuarios, onSave, excluir, alterarUsuario } = useUsuarios()
 
-        < Pagina className="flex flex-col gap-10" >
-            <Titulo icone={IconUser} principal="Usuarios" secundario="Lista Usuários" />
-            {/* <ListaUsuario /> */}
-            <FormUsuario
-                usuario={usuario}
-                onChange={setUsuario}
-                onSave={onSave}
-                onCancel={() => { }}
-            />
-        </Pagina >
+    return (
+        <Pagina className="flex flex-col gap-10">
+            <Titulo icone={IconUser} principal="Usuários" secundario="Cadastro de usuários" />
+
+            {usuario ? (
+                <FormUsuario
+                    usuario={usuario}
+                    onChange={alterarUsuario}
+                    onSave={onSave}
+                    onCancel={() => alterarUsuario(null)}
+                    excluir={excluir}
+                />
+            ) : (
+                <>
+                    <div className="flex justify-end">
+                        <button
+                            className="flex items-center gap-2 bg-blue-500 px-4 py-2 rounded-md"
+                            onClick={() => alterarUsuario({})}
+                        >
+                            <IconPlus />
+                            <span>Novo Usuário</span>
+                        </button>
+                    </div>
+                    <ListaUsuario usuarios={usuarios} onClick={alterarUsuario} />
+                </>
+            )}
+        </Pagina>
     )
-};
+}
