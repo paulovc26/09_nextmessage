@@ -15,4 +15,27 @@ model Usuario {
   email String @unique
   nome  String
   senha String
+
+  Gastos   Gastos[]
+  Receitas Receitas[]
+}
+
+model Gastos {
+  id        String   @id @default(cuid())
+  descricao String
+  valor     Float
+  data      DateTime
+  tipo      String
+  usuarioId String
+  usuario   Usuario  @relation(fields: [usuarioId], references: [id])
+}
+
+model Receitas {
+  id        String   @id @default(cuid())
+  descricao String
+  valor     Float
+  data      DateTime
+  tipo      String
+  usuarioId String
+  usuario   Usuario  @relation(fields: [usuarioId], references: [id])
 }
